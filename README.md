@@ -1,3 +1,34 @@
+Notes
+-----
+
+ - To replicate:
+```
+./sbt
+```
+
+```
+> console
+```
+
+```
+scala> import warmup.Warmup._
+scala> filter(List(1, 2, 3))(_ < 2)
+```
+
+ - Only happends via sbt, the following does _not_ replicate:
+
+```
+scalac -deprecation -unchecked -optimise -Ywarn-all -Xlint -feature -language:_  src/main/scala/warmup/Warmup.scala
+scala -cp .
+```
+
+```
+scala> import warmup.Warmup._
+scala> filter(List(1, 2, 3))(_ < 2)
+```
+
+ - does not happen if method is called anything except filter (it was seen with map also, but unable to come up with replication case).
+
 
 Thread dump during hang
 -----------------------
